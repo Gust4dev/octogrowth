@@ -15,6 +15,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: auto !important; /* Lenis takes control */
+  }
+
   body {
     background-color: #0c0c0c;
     color: #e5e5e5;
@@ -33,5 +37,48 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #5a6b4d;
+  }
+}
+
+@layer utilities {
+  /* GPU Acceleration Utility */
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0); 
+    /* backface-visibility: hidden;  <-- Optional, sometimes helps */
+  }
+
+  /* Optimized Keyframes (moved from JS/Inline) */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0) translateZ(0); }
+    50% { transform: translateY(-20px) translateX(10px) translateZ(0); }
+  }
+
+  .animate-float-slow { 
+    animation: float 12s ease-in-out infinite; 
+  }
+  .animate-float-delay-1 { 
+    animation: float 16s ease-in-out infinite reverse; 
+    animation-delay: -2s; 
+  }
+  .animate-float-delay-2 { 
+    animation: float 20s ease-in-out infinite; 
+    animation-delay: -5s; 
+  }
+  .animate-float-reverse { 
+    animation: float 18s ease-in-out infinite reverse; 
+  }
+  .animate-pulse-slow { 
+    animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+  }
+
+  /* Infinite Scroll Ticker (CSS Optimized) */
+  @keyframes ticker {
+    0% { transform: translateX(0) translateZ(0); }
+    100% { transform: translateX(-50%) translateZ(0); }
+  }
+  .animate-ticker {
+    animation: ticker 40s linear infinite;
+    will-change: transform;
   }
 }

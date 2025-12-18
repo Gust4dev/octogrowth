@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import TentacleBackground from './components/TentacleBackground';
+import { StickyCTA } from './components/StickyCTA';
 import { 
   Heart, 
   Brain, 
@@ -108,7 +109,7 @@ export default function App() {
       <TentacleBackground />
 
       {/* Header/Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-military-950/90 backdrop-blur-md border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-military-950/95 border-b border-gold-500/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-2xl font-serif text-white tracking-widest">OCTO <span className="text-gold-500">GROWTH</span></span>
@@ -120,7 +121,7 @@ export default function App() {
             <a href="#faq" className="hover:text-gold-400 transition-colors">Dúvidas</a>
           </div>
           <button className="bg-gold-600 hover:bg-gold-500 text-black font-bold py-2 px-6 rounded-sm transition-all transform hover:scale-105 uppercase tracking-wide text-xs">
-            Aplicação
+            Candidatar-se
           </button>
         </div>
       </nav>
@@ -137,7 +138,7 @@ export default function App() {
             className="mb-8"
           >
             <span className="inline-block py-2 px-4 border border-gold-500/30 rounded-sm bg-gold-500/10 text-gold-400 text-xs font-bold tracking-[0.2em] uppercase">
-              Para empresas acima de R$ 100k/mês
+              Exclusivo para Operações R$ 100k+
             </span>
           </motion.div>
           
@@ -149,7 +150,7 @@ export default function App() {
           >
             CONTROLE.<br />
             MARGEM.<br />
-            <span className="text-gold-500">CRESCIMENTO.</span>
+            <span className="text-gold-500">LIBERDADE.</span>
           </motion.h1>
 
           <motion.p 
@@ -158,8 +159,8 @@ export default function App() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-zinc-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
-            Não somos barulhentos. Somos estruturais.<br/>
-            Transformamos esforço operacional em lucro líquido.
+            Sua empresa cresceu, mas o dinheiro sumiu?<br/>
+            Nós estancamos o sangramento e devolvemos o comando para suas mãos.
           </motion.p>
 
           <motion.div 
@@ -169,7 +170,7 @@ export default function App() {
             className="flex flex-col md:flex-row gap-6 justify-center items-center"
           >
              <button className="bg-gold-600 hover:bg-gold-500 text-black font-bold py-4 px-8 rounded-sm transition-all transform hover:scale-105 tracking-widest uppercase w-full md:w-auto">
-               Aplicar Agora
+               Candidatar-se à Mentoria
              </button>
             <a href="#metodo" className="group inline-flex items-center gap-3 text-white border-b border-gold-500 pb-1 hover:text-gold-400 transition-all text-sm font-bold uppercase tracking-widest">
               <span>Entenda o Método</span>
@@ -183,15 +184,9 @@ export default function App() {
       <div className="bg-military-950 border-y border-white/5 overflow-hidden py-8 relative">
         <div className="absolute inset-0 bg-military-950/50 z-10 pointer-events-none"></div>
         <div className="flex relative z-0 overflow-hidden">
-          <motion.div 
-            initial={{ x: 0 }}
-            animate={{ x: "-50%" }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="flex gap-16 whitespace-nowrap min-w-max px-8"
-          >
-            {[...Array(2)].map((_, i) => (
-              <React.Fragment key={i}>
-                <span className="text-2xl font-serif text-white/40 flex items-center gap-4">
+          <div className="flex gap-16 whitespace-nowrap min-w-max px-8 animate-ticker">
+            {[...Array(4)].map((_, i) => (
+               <span key={i} className="text-2xl font-serif text-white/40 flex items-center gap-4">
                   <span className="text-gold-500 font-bold">+R$ 30 MILHÕES GERADOS</span>
                   <span className="w-2 h-2 rounded-full bg-military-500"></span>
                   <span className="text-white/40">+350 EMPRESAS MENTORADAS</span>
@@ -202,22 +197,9 @@ export default function App() {
                   <span className="w-2 h-2 rounded-full bg-military-500"></span>
                   <span className="text-gold-500 font-bold">12 ANOS DE MERCADO</span>
                   <span className="w-2 h-2 rounded-full bg-military-500"></span>
-                </span>
-                <span className="text-2xl font-serif text-white/40 flex items-center gap-4">
-                  <span className="text-gold-500 font-bold">+R$ 30 MILHÕES GERADOS</span>
-                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
-                  <span className="text-white/40">+350 EMPRESAS MENTORADAS</span>
-                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
-                  <span className="text-white/40">METODOLOGIA OCTO GROWTH</span>
-                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
-                  <span className="text-white/40">MARGEM & LUCRO</span>
-                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
-                  <span className="text-gold-500 font-bold">12 ANOS DE MERCADO</span>
-                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
-                </span>
-              </React.Fragment>
+               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -226,18 +208,18 @@ export default function App() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <FadeIn>
             <h2 className="text-4xl font-serif text-white mb-6">
-              O PROBLEMA REAL<br />
-              <span className="text-military-500">NÃO É ESFORÇO.</span>
+              A ARMADILHA<br />
+              <span className="text-military-500">DO FATURAMENTO.</span>
             </h2>
             <p className="text-lg text-zinc-400 mb-6 leading-relaxed">
-              Se a sua empresa fatura, mas o dinheiro não sobra, você está preso no <strong>Ciclo da Sobrevivência</strong>.
+              Você construiu uma máquina de gerar boletos, não de gerar lucro. A equipe inchou, a complexidade explodiu e você virou o funcionário mais caro e estressado do próprio negócio.
             </p>
             <p className="text-lg text-zinc-400 mb-6 leading-relaxed">
-              Você vende, entrega, paga funcionário, gira caixa... e no final do mês sobra cansaço. A operação cresce, o faturamento sobe, mas o lucro não acompanha. Você virou refém do próprio negócio.
+              Isso não é empreender. É punição. Não resolvemos isso trabalhando mais. Resolvemos cortando o que não traz margem.
             </p>
             <div className="pl-6 border-l-2 border-gold-500">
               <p className="text-xl text-white italic font-serif">
-                "Empresas não quebram por falta de vendas. Quebram por falta de gestão de margem e caixa."
+                "Empresa Rica, Dono Pobre."
               </p>
             </div>
           </FadeIn>
@@ -331,17 +313,17 @@ export default function App() {
             {
               icon: <DollarSign className="w-10 h-10 text-gold-500" />,
               title: "1. CAIXA (Oxigênio)",
-              desc: "Sem caixa, não existe longo prazo. Estancamos sangramentos imediatamente. Implementamos gestão financeira profissional para você nunca mais ser pego de surpresa."
+              desc: "Faturamento é vaidade, Caixa é sanidade. Sem caixa, você não tem uma empresa, tem um hobby caro. Blindamos o financeiro primeiro."
             },
             {
               icon: <TrendingUp className="w-10 h-10 text-gold-500" />,
               title: "2. MARGEM (Saúde)",
-              desc: "Faturamento é vaidade. Margem é sanidade. Revisamos precificação e custos para garantir que cada venda deixe lucro real no bolso da empresa."
+              desc: "Você provavelmente está pagando para trabalhar. Ajustamos sua oferta para que cada venda deixe lucro real, não apenas movimento."
             },
             {
               icon: <ShieldCheck className="w-10 h-10 text-gold-500" />,
               title: "3. AUTORIDADE (Força)",
-              desc: "Quem tem autoridade não briga por preço. Reposicionamos sua marca para que o cliente perceba valor antes mesmo de ver a proposta."
+              desc: "Saia da guerra de preços. Reposicionamos sua marca para que o cliente pague mais caro e ainda agradeça."
             }
           ].map((card, i) => (
             <FadeIn key={i} delay={i * 0.2}>
@@ -369,20 +351,19 @@ export default function App() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
-            { icon: <Target className="w-12 h-12" />, title: "Posicionamento", desc: "Definição clara de quem é e quem não é seu cliente." },
-            { icon: <ShoppingBag className="w-12 h-12" />, title: "Oferta & Produto", desc: "Arquitetura de produtos de alta margem." },
-            { icon: <DollarSign className="w-12 h-12" />, title: "Precificação", desc: "Estratégia de preço para lucro, não para volume." },
-            { icon: <Users className="w-12 h-12" />, title: "Aquisição", desc: "Canais de vendas previsíveis e escaláveis." },
-            { icon: <Briefcase className="w-12 h-12" />, title: "Operação & Processos", desc: "Padronização para a empresa rodar sem você." },
-            { icon: <Users className="w-12 h-12" />, title: "Gestão de Pessoas", desc: "Cultura, contratação e remuneração variável." },
-            { icon: <Zap className="w-12 h-12" />, title: "Marketing de Resposta", desc: "Ações que geram vendas hoje, não 'branding' vazio." },
-            { icon: <BarChart3 className="w-12 h-12" />, title: "Comercial", desc: "Scripts, CRM e rotinas de fechamento agressivo." },
-            { icon: <PieChart className="w-12 h-12" />, title: "Gestão do Dono", desc: "Sua rotina, seus números e seu papel estratégico." },
+            { icon: <Target className="w-12 h-12" />, title: "Posicionamento", desc: "Pare de vender para todo mundo. Venda para quem paga." },
+            { icon: <ShoppingBag className="w-12 h-12" />, title: "Oferta & Produto", desc: "Produtos de alta margem desenhados para escala." },
+            { icon: <DollarSign className="w-12 h-12" />, title: "Precificação", desc: "Estratégia de lucro, não matemática de custo." },
+            { icon: <Users className="w-12 h-12" />, title: "Aquisição", desc: "Clientes qualificados, não curiosos." },
+            { icon: <Briefcase className="w-12 h-12" />, title: "Operação & Processos", desc: "Processos que funcionam sem você na sala." },
+            { icon: <Users className="w-12 h-12" />, title: "Gestão de Pessoas", desc: "Quem não se paga, está fora. Gestão por performance." },
+            { icon: <Zap className="w-12 h-12" />, title: "Marketing de Resposta", desc: "Zero branding vazio. 100% resposta direta." },
+            { icon: <BarChart3 className="w-12 h-12" />, title: "Comercial", desc: "Scripts de fechamento rápido. Sem 'vou pensar'." },
+            { icon: <PieChart className="w-12 h-12" />, title: "Gestão do Dono", desc: "Saia do operacional. Assuma o estratégico." },
           ].map((brain, i) => (
             <FadeIn key={i} delay={i * 0.05}>
               <motion.div 
-                whileHover={{ scale: 1.02, backgroundColor: "rgba(20, 28, 20, 0.8)" }}
-                className="p-6 border border-military-800 bg-military-900/40 rounded-sm hover:border-gold-500/50 transition-all cursor-default group relative overflow-hidden h-full"
+                className="p-6 border border-military-800 bg-military-900/40 rounded-sm hover:border-gold-500 hover:bg-military-800/60 transition-colors duration-300 cursor-default group relative overflow-hidden h-full"
               >
                 <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-100 transition-opacity text-gold-500 duration-500 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0">
                   {brain.icon}
@@ -401,7 +382,7 @@ export default function App() {
 
       {/* HOW IT WORKS / DELIVERABLES */}
       <Section id="entregaveis">
-        <SectionTitle subtitle="Como Funciona">O ARSENAL OCTO</SectionTitle>
+        <SectionTitle subtitle="Como Funciona">O PROTOCOLO DE RESGATE</SectionTitle>
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
              <div className="space-y-8">
@@ -412,7 +393,7 @@ export default function App() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2">6 Meses de Acompanhamento</h3>
-                      <p className="text-zinc-400 text-sm">Tempo suficiente para implementar, corrigir e colher resultados. Não é um curso de fim de semana, é uma reestruturação.</p>
+                      <p className="text-zinc-400 text-sm">Não é um curso. É uma intervenção cirúrgica no seu negócio. Tempo suficiente para implementar, corrigir e colher resultados.</p>
                     </div>
                   </div>
                 </FadeIn>
@@ -435,8 +416,8 @@ export default function App() {
                       <MessageCircle />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Grupo de Networking</h3>
-                      <p className="text-zinc-400 text-sm">Acesso direto a outros empresários do mesmo nível. O ambiente molda seus resultados.</p>
+                      <h3 className="text-xl font-bold text-white mb-2">Acesso à Mesa Octo</h3>
+                      <p className="text-zinc-400 text-sm">Você é a média das pessoas com quem convive. Sente-se ao lado de quem já superou seus problemas atuais.</p>
                     </div>
                   </div>
                 </FadeIn>
@@ -468,43 +449,62 @@ export default function App() {
       </Section>
 
       {/* THE MENTOR */}
+      {/* THE MENTOR */}
       <Section id="mentor" darker>
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/3">
-             {/* Placeholder for Mentor Image - using a stylistic distinct div */}
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+          <div className="md:w-1/3 w-full">
+             {/* Mentor Image */}
              <div className="aspect-[3/4] bg-military-800 relative overflow-hidden rounded-sm border border-gold-500/20 grayscale hover:grayscale-0 transition-all duration-700">
                 <img 
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Mentor" 
-                  className="w-full h-full object-cover opacity-80"
+                  src="/gustavo/gustavo.webp" 
+                  alt="Gustavo Neves" 
+                  loading="lazy"
+                  className="w-full h-full object-cover opacity-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-military-950 via-transparent to-transparent"></div>
              </div>
           </div>
-          <div className="md:w-2/3">
-            <h2 className="text-gold-500 font-bold tracking-[0.2em] text-sm mb-2 uppercase">Quem Comanda</h2>
-            <h3 className="text-4xl font-serif text-white mb-6">ROBERTO DIAS</h3>
-            <p className="text-zinc-400 mb-6 text-lg leading-relaxed">
-              Não sou guru de palco. Sou empresário de trincheira.
+          <div className="md:w-2/3 w-full">
+            <h2 className="text-gold-500 font-bold tracking-[0.2em] text-sm mb-2 uppercase">QUEM COMANDA</h2>
+            <h3 className="text-4xl md:text-5xl font-serif text-white mb-4">GUSTAVO NEVES</h3>
+            <p className="text-xl text-zinc-300 font-serif italic mb-6">
+              "De Executor a Estrategista."
             </p>
-            <p className="text-zinc-400 mb-6 leading-relaxed">
-              Fundador de 3 empresas que somam mais de <strong>R$ 30 milhões em faturamento anual</strong>. Criei a metodologia Octo Growth porque cansei de ver empresários talentosos quebrando por falta de estrutura básica.
-            </p>
-            <p className="text-zinc-400 mb-8 leading-relaxed">
-              Minha especialidade é entrar em operações caóticas, identificar os gargalos de lucro e implementar processos que funcionam independente das pessoas.
-            </p>
-            <div className="flex gap-8 border-t border-military-800 pt-8">
+            
+            <div className="space-y-4 text-zinc-400 mb-8 leading-relaxed text-lg">
+              <p>
+                Eu não sou um guru de palco que nunca sujou a mão de graxa. Sou empresário de campo de batalha.
+              </p>
+              <p>
+                Comecei em 2009, como envelopador. Construí a <strong>Filmtech Luxury</strong>, hoje referência nacional em estética automotiva de alto padrão, atendendo milhares de clientes e celebridades com a chancela de qualidade da 3M.
+              </p>
+              <p>
+                Mas eu conheço a sua dor, porque eu vivi ela. Durante anos, eu fui o gargalo da minha própria empresa. A centralização me custou caro.
+              </p>
+              <p>
+                A virada de chave não foi trabalhar mais. Foi criar processos. Decidi que minha empresa não dependeria do meu braço, mas da minha mente.
+              </p>
+              <p>
+                Criei a <strong>Octo Growth</strong> para entregar exatamente esse "Manual de Operações" que me faltou no começo. Para tirar você do operacional e te colocar no comando estratégico.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 border-t border-military-800 pt-8">
                <div>
-                 <span className="block text-3xl font-serif text-white">12+</span>
+                 <span className="block text-2xl md:text-3xl font-serif text-white">15+</span>
                  <span className="text-xs text-zinc-500 uppercase tracking-widest">Anos de Mercado</span>
                </div>
                <div>
-                 <span className="block text-3xl font-serif text-white">350+</span>
-                 <span className="text-xs text-zinc-500 uppercase tracking-widest">Empresas Mentoradas</span>
+                 <span className="block text-2xl md:text-3xl font-serif text-white">3M</span>
+                 <span className="text-xs text-zinc-500 uppercase tracking-widest">Referência Mundial</span>
                </div>
                <div>
-                 <span className="block text-3xl font-serif text-white">R$80M+</span>
-                 <span className="text-xs text-zinc-500 uppercase tracking-widest">Gerados p/ Alunos</span>
+                 <span className="block text-2xl md:text-3xl font-serif text-white">Filmtech</span>
+                 <span className="text-xs text-zinc-500 uppercase tracking-widest">Luxury & Academy</span>
+               </div>
+               <div>
+                 <span className="block text-2xl md:text-3xl font-serif text-white">Milhares</span>
+                 <span className="text-xs text-zinc-500 uppercase tracking-widest">De Clientes Atendidos</span>
                </div>
             </div>
           </div>
@@ -597,7 +597,7 @@ export default function App() {
 
           <div className="mt-12 text-center">
              <button className="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-black font-bold py-4 px-12 text-lg rounded-sm tracking-wide shadow-[0_0_20px_rgba(197,160,40,0.3)] transition-all transform hover:scale-105 uppercase">
-               Aplicar para a Mentoria
+               Candidatar-se à Mentoria
              </button>
              <p className="mt-4 text-xs text-zinc-500 uppercase tracking-widest">Processo seletivo necessário</p>
           </div>
@@ -674,36 +674,3 @@ export default function App() {
     </div>
   );
 }
-
-const StickyCTA = () => {
-  const { scrollY } = useScroll();
-  const [isVisible, setIsVisible] = useState(false);
-
-  React.useEffect(() => {
-    return scrollY.on("change", (latest) => {
-      setIsVisible(latest > 800);
-    });
-  }, [scrollY]);
-
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.button
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 50, scale: 0.9 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => alert("Abrir Modal de Aplicação (Typeform/Tally)")}
-          className="fixed bottom-8 right-8 z-50 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 px-8 rounded-full shadow-[0_0_30px_rgba(197,160,40,0.4)] border-2 border-gold-400 uppercase tracking-widest text-sm flex items-center gap-2"
-        >
-          <span className="relative flex h-3 w-3 mr-1">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-30"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-black"></span>
-          </span>
-          Aplicação
-        </motion.button>
-      )}
-    </AnimatePresence>
-  );
-};
