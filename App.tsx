@@ -23,7 +23,7 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useScroll } from 'framer-motion';
 
 // --- Shared Components ---
 
@@ -104,11 +104,11 @@ const AccordionItem: React.FC<{ question: string; answer: string }> = ({ questio
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-zinc-950 text-zinc-300 font-sans selection:bg-gold-500/30 selection:text-gold-400">
+    <div className="relative min-h-screen bg-military-950 text-zinc-300 font-sans selection:bg-gold-500/30 selection:text-gold-400">
       <TentacleBackground />
 
       {/* Header/Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-military-950/90 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-2xl font-serif text-white tracking-widest">OCTO <span className="text-gold-500">GROWTH</span></span>
@@ -127,9 +127,9 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-military-900/20 to-zinc-950 z-0" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-military-500/10 rounded-full blur-[100px] pointer-events-none" />
         
-        <div className="max-w-5xl mx-auto px-6 text-center z-10">
+        <div className="max-w-5xl mx-auto px-6 text-center z-10 relative">
           <motion.div 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
@@ -179,6 +179,48 @@ export default function App() {
         </div>
       </section>
 
+      {/* Social Proof Ticker */}
+      <div className="bg-military-950 border-y border-white/5 overflow-hidden py-8 relative">
+        <div className="absolute inset-0 bg-military-950/50 z-10 pointer-events-none"></div>
+        <div className="flex relative z-0 overflow-hidden">
+          <motion.div 
+            initial={{ x: 0 }}
+            animate={{ x: "-50%" }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="flex gap-16 whitespace-nowrap min-w-max px-8"
+          >
+            {[...Array(2)].map((_, i) => (
+              <React.Fragment key={i}>
+                <span className="text-2xl font-serif text-white/40 flex items-center gap-4">
+                  <span className="text-gold-500 font-bold">+R$ 30 MILHÕES GERADOS</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-white/40">+350 EMPRESAS MENTORADAS</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-white/40">METODOLOGIA OCTO GROWTH</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-white/40">MARGEM & LUCRO</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-gold-500 font-bold">12 ANOS DE MERCADO</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                </span>
+                <span className="text-2xl font-serif text-white/40 flex items-center gap-4">
+                  <span className="text-gold-500 font-bold">+R$ 30 MILHÕES GERADOS</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-white/40">+350 EMPRESAS MENTORADAS</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-white/40">METODOLOGIA OCTO GROWTH</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-white/40">MARGEM & LUCRO</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                  <span className="text-gold-500 font-bold">12 ANOS DE MERCADO</span>
+                  <span className="w-2 h-2 rounded-full bg-military-500"></span>
+                </span>
+              </React.Fragment>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
       {/* The Problem */}
       <Section id="problema" darker>
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -200,7 +242,7 @@ export default function App() {
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-sm relative">
+            <div className="bg-military-900/50 border border-white/5 p-8 rounded-sm relative">
               <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-gold-500/50" />
               <div className="absolute -bottom-4 -left-4 w-20 h-20 border-b-2 border-l-2 border-gold-500/50" />
               
@@ -232,7 +274,7 @@ export default function App() {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
            {/* Left: Current State */}
            <FadeIn>
-             <div className="bg-zinc-900/30 p-8 border border-red-900/20 rounded-sm h-full opacity-70 hover:opacity-100 transition-opacity">
+             <div className="bg-military-900/30 p-8 border border-red-900/20 rounded-sm h-full opacity-70 hover:opacity-100 transition-opacity">
                <h3 className="text-2xl font-serif text-red-900/80 mb-6 flex items-center gap-3">
                  <XCircle /> O Cenário Atual
                </h3>
@@ -266,7 +308,7 @@ export default function App() {
       {/* The Metaphor */}
       <Section className="text-center" darker>
         <FadeIn>
-          <div className="inline-block p-4 rounded-full bg-zinc-950 border border-military-700 mb-8 shadow-2xl">
+          <div className="inline-block p-4 rounded-full bg-military-950 border border-military-700 mb-8 shadow-2xl">
             <span className="text-4xl grayscale brightness-150">🐙</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-8">
@@ -303,8 +345,8 @@ export default function App() {
             }
           ].map((card, i) => (
             <FadeIn key={i} delay={i * 0.2}>
-              <div className="bg-zinc-900/50 border border-zinc-800 p-8 hover:border-gold-500/30 transition-all group h-full hover:bg-zinc-900">
-                <div className="mb-6 bg-zinc-950 w-20 h-20 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform duration-500 border border-zinc-800 shadow-lg">
+              <div className="bg-military-900/50 border border-military-800 p-8 hover:border-gold-500/30 transition-all group h-full hover:bg-military-900">
+                <div className="mb-6 bg-military-950 w-20 h-20 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform duration-500 border border-military-800 shadow-lg">
                   {card.icon}
                 </div>
                 <h3 className="text-xl font-serif text-white mb-4 uppercase tracking-wide">{card.title}</h3>
@@ -325,28 +367,33 @@ export default function App() {
           Na Octo Growth, implementamos 9 sistemas de gestão no seu negócio.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
-            { icon: <Target />, title: "Posicionamento", desc: "Definição clara de quem é e quem não é seu cliente." },
-            { icon: <ShoppingBag />, title: "Oferta & Produto", desc: "Arquitetura de produtos de alta margem." },
-            { icon: <DollarSign />, title: "Precificação", desc: "Estratégia de preço para lucro, não para volume." },
-            { icon: <Users />, title: "Aquisição", desc: "Canais de vendas previsíveis e escaláveis." },
-            { icon: <Briefcase />, title: "Operação & Processos", desc: "Padronização para a empresa rodar sem você." },
-            { icon: <Users />, title: "Gestão de Pessoas", desc: "Cultura, contratação e remuneração variável." },
-            { icon: <Zap />, title: "Marketing de Resposta", desc: "Ações que geram vendas hoje, não 'branding' vazio." },
-            { icon: <BarChart3 />, title: "Comercial", desc: "Scripts, CRM e rotinas de fechamento agressivo." },
-            { icon: <PieChart />, title: "Gestão do Dono", desc: "Sua rotina, seus números e seu papel estratégico." },
+            { icon: <Target className="w-12 h-12" />, title: "Posicionamento", desc: "Definição clara de quem é e quem não é seu cliente." },
+            { icon: <ShoppingBag className="w-12 h-12" />, title: "Oferta & Produto", desc: "Arquitetura de produtos de alta margem." },
+            { icon: <DollarSign className="w-12 h-12" />, title: "Precificação", desc: "Estratégia de preço para lucro, não para volume." },
+            { icon: <Users className="w-12 h-12" />, title: "Aquisição", desc: "Canais de vendas previsíveis e escaláveis." },
+            { icon: <Briefcase className="w-12 h-12" />, title: "Operação & Processos", desc: "Padronização para a empresa rodar sem você." },
+            { icon: <Users className="w-12 h-12" />, title: "Gestão de Pessoas", desc: "Cultura, contratação e remuneração variável." },
+            { icon: <Zap className="w-12 h-12" />, title: "Marketing de Resposta", desc: "Ações que geram vendas hoje, não 'branding' vazio." },
+            { icon: <BarChart3 className="w-12 h-12" />, title: "Comercial", desc: "Scripts, CRM e rotinas de fechamento agressivo." },
+            { icon: <PieChart className="w-12 h-12" />, title: "Gestão do Dono", desc: "Sua rotina, seus números e seu papel estratégico." },
           ].map((brain, i) => (
             <FadeIn key={i} delay={i * 0.05}>
-              <div className="flex items-start gap-4 p-5 border border-zinc-800/50 bg-zinc-950/40 hover:bg-military-900/20 transition-colors h-full">
-                <div className="text-gold-600 mt-1">
+              <motion.div 
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(20, 28, 20, 0.8)" }}
+                className="p-6 border border-military-800 bg-military-900/40 rounded-sm hover:border-gold-500/50 transition-all cursor-default group relative overflow-hidden h-full"
+              >
+                <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-100 transition-opacity text-gold-500 duration-500 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0">
                   {brain.icon}
                 </div>
-                <div>
-                  <h4 className="text-base font-bold text-white mb-1 font-serif uppercase tracking-wider">{brain.title}</h4>
-                  <p className="text-xs text-zinc-500 leading-relaxed">{brain.desc}</p>
+                <div className="relative z-10">
+                  <h4 className="text-gold-400 font-serif text-lg mb-3 uppercase tracking-wide">{brain.title}</h4>
+                  <p className="text-zinc-400 text-sm leading-relaxed border-l-2 border-military-800 pl-3 group-hover:border-gold-500 transition-colors duration-300">
+                      {brain.desc}
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             </FadeIn>
           ))}
         </div>
@@ -395,7 +442,7 @@ export default function App() {
                 </FadeIn>
              </div>
 
-             <div className="bg-zinc-900 border border-zinc-800 p-8 rounded-sm">
+             <div className="bg-military-900 border border-military-800 p-8 rounded-sm">
                 <h3 className="text-gold-500 font-bold tracking-widest uppercase mb-6 text-sm">Materiais Inclusos</h3>
                 <ul className="space-y-4">
                   {[
@@ -425,7 +472,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/3">
              {/* Placeholder for Mentor Image - using a stylistic distinct div */}
-             <div className="aspect-[3/4] bg-zinc-800 relative overflow-hidden rounded-sm border border-gold-500/20 grayscale hover:grayscale-0 transition-all duration-700">
+             <div className="aspect-[3/4] bg-military-800 relative overflow-hidden rounded-sm border border-gold-500/20 grayscale hover:grayscale-0 transition-all duration-700">
                 <img 
                   src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
                   alt="Mentor" 
@@ -446,7 +493,7 @@ export default function App() {
             <p className="text-zinc-400 mb-8 leading-relaxed">
               Minha especialidade é entrar em operações caóticas, identificar os gargalos de lucro e implementar processos que funcionam independente das pessoas.
             </p>
-            <div className="flex gap-8 border-t border-zinc-800 pt-8">
+            <div className="flex gap-8 border-t border-military-800 pt-8">
                <div>
                  <span className="block text-3xl font-serif text-white">12+</span>
                  <span className="text-xs text-zinc-500 uppercase tracking-widest">Anos de Mercado</span>
@@ -469,13 +516,13 @@ export default function App() {
         <SectionTitle subtitle="Resultados Reais">NÃO ACREDITE EM PALAVRAS</SectionTitle>
         <div className="grid md:grid-cols-3 gap-6">
            <FadeIn>
-             <div className="bg-zinc-900 p-8 border border-zinc-800 relative">
+             <div className="bg-military-900 p-8 border border-military-800 relative">
                <div className="text-gold-500 text-4xl font-serif absolute top-4 left-6">"</div>
                <p className="text-zinc-300 italic mb-6 mt-4 relative z-10">
                  Cheguei faturando 150k e sem ver a cor do dinheiro. Em 4 meses de Octo, reduzimos o custo fixo em 20% e dobramos a margem líquida. Pela primeira vez tirei férias sem o celular.
                </p>
                <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-zinc-800 rounded-full"></div>
+                 <div className="w-10 h-10 bg-military-800 rounded-full"></div>
                  <div>
                    <p className="text-white font-bold text-sm">Ricardo Silva</p>
                    <p className="text-zinc-500 text-xs">Agência de Marketing</p>
@@ -485,13 +532,13 @@ export default function App() {
            </FadeIn>
 
            <FadeIn delay={0.1}>
-             <div className="bg-zinc-900 p-8 border border-zinc-800 relative">
+             <div className="bg-military-900 p-8 border border-military-800 relative">
                <div className="text-gold-500 text-4xl font-serif absolute top-4 left-6">"</div>
                <p className="text-zinc-300 italic mb-6 mt-4 relative z-10">
                  Eu achava que meu problema era vender mais. O Roberto me mostrou que eu estava pagando para trabalhar. Reajustamos preços e a demanda aumentou pela autoridade.
                </p>
                <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-zinc-800 rounded-full"></div>
+                 <div className="w-10 h-10 bg-military-800 rounded-full"></div>
                  <div>
                    <p className="text-white font-bold text-sm">Amanda Costa</p>
                    <p className="text-zinc-500 text-xs">Clínica de Estética</p>
@@ -501,13 +548,13 @@ export default function App() {
            </FadeIn>
 
            <FadeIn delay={0.2}>
-             <div className="bg-zinc-900 p-8 border border-zinc-800 relative">
+             <div className="bg-military-900 p-8 border border-military-800 relative">
                <div className="text-gold-500 text-4xl font-serif absolute top-4 left-6">"</div>
                <p className="text-zinc-300 italic mb-6 mt-4 relative z-10">
                  O módulo de gestão de pessoas salvou minha empresa. Tinha 20 funcionários batendo cabeça. Hoje tenho 12 voando baixo. Menos custo, mais resultado.
                </p>
                <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-zinc-800 rounded-full"></div>
+                 <div className="w-10 h-10 bg-military-800 rounded-full"></div>
                  <div>
                    <p className="text-white font-bold text-sm">Carlos Mendes</p>
                    <p className="text-zinc-500 text-xs">Indústria Têxtil</p>
@@ -520,7 +567,7 @@ export default function App() {
 
       {/* Audience Checklist */}
       <Section darker>
-        <div className="max-w-4xl mx-auto bg-zinc-950 border border-gold-500/20 p-8 md:p-12 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-military-950 border border-gold-500/20 p-8 md:p-12 relative overflow-hidden">
            {/* Decorative corner */}
            <div className="absolute top-0 right-0 p-4">
               <div className="w-16 h-1 bg-gold-500/20 rotate-45 transform origin-top-right"></div>
@@ -587,7 +634,7 @@ export default function App() {
       </Section>
 
       {/* Footer */}
-      <footer className="bg-black py-20 px-6 border-t border-zinc-900 relative z-10">
+      <footer className="bg-black py-20 px-6 border-t border-military-900 relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
           <div>
             <div className="text-3xl font-serif text-white tracking-widest mb-6">
@@ -615,7 +662,7 @@ export default function App() {
           </div>
         </div>
         
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-zinc-900 text-center md:text-left text-zinc-700 text-sm flex flex-col md:flex-row justify-between">
+        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-military-900 text-center md:text-left text-zinc-700 text-sm flex flex-col md:flex-row justify-between">
           <span>&copy; {new Date().getFullYear()} Octo Growth. Todos os direitos reservados.</span>
           <div className="flex gap-6 justify-center md:justify-end mt-4 md:mt-0">
             <span className="cursor-pointer hover:text-zinc-500">Termos de Uso</span>
@@ -623,6 +670,40 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <StickyCTA />
     </div>
   );
 }
+
+const StickyCTA = () => {
+  const { scrollY } = useScroll();
+  const [isVisible, setIsVisible] = useState(false);
+
+  React.useEffect(() => {
+    return scrollY.on("change", (latest) => {
+      setIsVisible(latest > 800);
+    });
+  }, [scrollY]);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 50, scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => alert("Abrir Modal de Aplicação (Typeform/Tally)")}
+          className="fixed bottom-8 right-8 z-50 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 px-8 rounded-full shadow-[0_0_30px_rgba(197,160,40,0.4)] border-2 border-gold-400 uppercase tracking-widest text-sm flex items-center gap-2"
+        >
+          <span className="relative flex h-3 w-3 mr-1">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-30"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-black"></span>
+          </span>
+          Aplicação
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};

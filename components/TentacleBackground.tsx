@@ -1,90 +1,100 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 
-/**
- * Creates an abstract visual representation of tentacles using SVG paths.
- * Uses Framer Motion to animate them based on scroll position.
- * The style is sober, dark, and subtle.
- */
 const TentacleBackground: React.FC = () => {
-  const { scrollY } = useScroll();
-
-  // Parallax transformations for different "depths" of tentacles
-  const y1 = useTransform(scrollY, [0, 2000], [0, 400]);
-  const y2 = useTransform(scrollY, [0, 2000], [0, -300]);
-  const y3 = useTransform(scrollY, [0, 2000], [0, 150]);
-  const rotate1 = useTransform(scrollY, [0, 2000], [0, 10]);
-  const rotate2 = useTransform(scrollY, [0, 2000], [0, -15]);
-
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-30 mix-blend-multiply">
-      {/* Tentacle 1 - Left Bottom Large */}
-      <motion.div 
-        style={{ y: y1, rotate: rotate1 }}
-        className="absolute -bottom-20 -left-20 w-[600px] h-[800px] opacity-40"
-      >
-        <svg viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <path 
-            d="M0 600 C50 500, 150 400, 100 200 C80 120, 120 50, 150 0" 
-            stroke="#2c3326" 
-            strokeWidth="40" 
-            strokeLinecap="round"
-            className="drop-shadow-2xl"
-          />
-           <path 
-            d="M0 600 C50 500, 150 400, 100 200 C80 120, 120 50, 150 0" 
-            stroke="#1a2115" 
-            strokeWidth="10" 
-            strokeLinecap="round"
-            className="blur-sm"
-          />
-        </svg>
-      </motion.div>
-
-      {/* Tentacle 2 - Right Top Hanging */}
-      <motion.div 
-        style={{ y: y2 }}
-        className="absolute -top-40 -right-20 w-[500px] h-[900px] opacity-30"
-      >
-        <svg viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <path 
-            d="M180 0 C100 150, 0 300, 80 500 C110 580, 150 600, 180 650" 
-            stroke="#3f4a36" 
-            strokeWidth="50" 
-            strokeLinecap="round"
-          />
-        </svg>
-      </motion.div>
-
-      {/* Tentacle 3 - Center Background Fade */}
-      <motion.div 
-        style={{ y: y3, rotate: rotate2 }}
-        className="absolute top-1/3 left-1/4 w-[800px] h-[800px] opacity-20 blur-xl"
-      >
-        <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-           <path 
-            d="M0 500 C200 400, 400 300, 300 100 C250 0, 400 -50, 500 0" 
-            stroke="#2c3326" 
-            strokeWidth="80" 
-            strokeLinecap="round"
-          />
-        </svg>
-      </motion.div>
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-military-950">
       
-       {/* Tentacle 4 - Right Bottom Rising */}
-       <motion.div 
-        style={{ y: useTransform(scrollY, [0, 2000], [0, 600]) }}
-        className="absolute top-[80vh] -right-40 w-[600px] h-[800px] opacity-40"
-      >
-        <svg viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-           <path 
-            d="M200 600 C150 400, 50 300, 100 100" 
-            stroke="#1a2115" 
-            strokeWidth="60" 
-            strokeLinecap="round"
-          />
-        </svg>
-      </motion.div>
+      {/* 1. TEXTURA DE BASE (Noise) - Essencial para não parecer "plástico" */}
+      <div className="absolute inset-0 opacity-[0.06] mix-blend-overlay" 
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOcctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+      />
+
+      {/* 2. O "SPOTLIGHT" (A Iluminação Volumétrica) - O SEGREDO DO PREENCHIMENTO */}
+      {/* Isso cria um "teto de luz" verde que desce, tirando a sensação de vazio do topo */}
+      <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[120vw] h-[80vh] bg-military-500/20 rounded-full blur-[120px] mix-blend-screen" />
+      
+      {/* 3. FORMAS DE FUNDO (Deep Depth) */}
+      <div className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] bg-military-800/30 rounded-full blur-[100px] animate-pulse-slow" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-gold-600/5 rounded-full blur-[120px]" />
+
+      {/* 4. CAMADA DE LINHAS (Tentáculos) - Agora com "Glow" e mais visíveis */}
+      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="gradGoldVertical" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="transparent" />
+            <stop offset="20%" stopColor="#C5A028" stopOpacity="0.1" /> {/* Fade in */}
+            <stop offset="50%" stopColor="#C5A028" stopOpacity="0.6" /> {/* Meio forte */}
+            <stop offset="80%" stopColor="#C5A028" stopOpacity="0.1" /> {/* Fade out */}
+            <stop offset="100%" stopColor="transparent" />
+          </linearGradient>
+          
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Linha Hero (Ouro) - Mais grossa e brilhante */}
+        <path 
+          d="M800 -200 Q 600 400 1400 1200" 
+          vectorEffect="non-scaling-stroke"
+          stroke="url(#gradGoldVertical)" 
+          strokeWidth="2"
+          fill="none"
+          filter="url(#glow)" 
+          className="animate-float-slow opacity-60" 
+        />
+
+        {/* Linhas de Preenchimento (Verde/Cinza) */}
+        <path 
+          d="M-100 600 C 200 500, 500 100, 900 -200" 
+          vectorEffect="non-scaling-stroke"
+          stroke="#4a5e42" 
+          strokeWidth="1.5"
+          fill="none"
+          className="animate-float-delay-1 opacity-40"
+        />
+
+        <path 
+          d="M200 1200 Q 500 600 1000 1200" 
+          vectorEffect="non-scaling-stroke"
+          stroke="#3f4a36"
+          strokeWidth="1"
+          fill="none"
+          className="animate-float-delay-2 opacity-30"
+        />
+        
+        {/* Detalhes finos para textura */}
+        <path 
+          d="M1200 -100 C 1300 200, 1500 300, 1800 100" 
+          vectorEffect="non-scaling-stroke"
+          stroke="#C5A028"
+          strokeWidth="0.5"
+          fill="none"
+          className="animate-float-reverse opacity-30"
+        />
+      </svg>
+
+      {/* 5. VIGNETTE AGRESSIVA (Foca o olhar no centro) */}
+      <div className="absolute inset-0 bg-radial-gradient-vignette pointer-events-none" />
+
+      <style jsx>{`
+        .bg-radial-gradient-vignette {
+            background: radial-gradient(circle at center, transparent 40%, rgba(10, 15, 10, 0.8) 100%);
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-20px) translateX(10px); }
+        }
+        .animate-float-slow { animation: float 12s ease-in-out infinite; will-change: transform; }
+        .animate-float-delay-1 { animation: float 16s ease-in-out infinite reverse; animation-delay: -2s; will-change: transform; }
+        .animate-float-delay-2 { animation: float 20s ease-in-out infinite; animation-delay: -5s; will-change: transform; }
+        .animate-float-reverse { animation: float 18s ease-in-out infinite reverse; will-change: transform; }
+        .animate-pulse-slow { animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+      `}</style>
     </div>
   );
 };

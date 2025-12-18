@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-military-950: #0a0f0a;
+  --color-military-900: #141c14;
+  --color-military-800: #232e23;
+  --color-military-500: #4a5e42;
+  
+  --color-gold-400: #DEC68B;
+  --color-gold-500: #C5A028;
+  --color-gold-600: #8E731C;
+
+  --font-serif: "Cinzel", serif;
+  --font-sans: "Manrope", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: #0c0c0c;
+    color: #e5e5e5;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3f4a36;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5a6b4d;
+  }
+}
