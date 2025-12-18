@@ -4,10 +4,11 @@ const TentacleBackground: React.FC = () => {
     return (
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-military-950">
             
-            {/* 1. TEXTURA DE BASE (Noise) - Static Base64 */}
-            <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none select-none" 
+            {/* 1. TEXTURA DE BASE (Noise) - Static Base64 for Performance */}
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none select-none z-0" 
                  style={{ 
-                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+                     backgroundImage: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABMTExERERmZmYzMzMyMjJec4xqAAAACHRSTlMzAJmZzMxmZgC1+W8FAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGUlEQVQ4jX2SwW3DQAxEnzRpA1R+8k0A5yTiBNIAnMMZHALxy7d8r44O468Y/z/435w451+V+f2f/f7P/v1/Veb3f/b7P/v3/1WZ3//Z7//s3/9XZX7/Z7//s3//X5X5/Z/9/s/+/X9V5vd/9vs/+/f/VZnf/9nv/+zf/1dlfv9nv/+zf/9flfn9n/3+z/79f1Xm93/2+z/79/9Vmd//2e//7N//V2V+/2e//7N//1+V+f2f/f7P/v1/Veb3f/b7P/v3/1WZ3//Z7//s3/9XZX7/Z7//s3//X5X5/Z/9/s/+/X9V5vd/9vs/+/f/VZnf/9nv/+zf/1dlfv9nv/+zf/9flfn9n/3+z/79f1Xm93/2+z/79/9V87g5+d03iQAAAABJRU5ErkJggg==")`,
+                     backgroundRepeat: 'repeat',
                  }} 
             />
 

@@ -27,7 +27,7 @@ export const StickyCTA = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => alert("Abrir Modal de Aplicação (Typeform/Tally)")}
-          className="fixed bottom-8 right-8 z-50 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 px-8 rounded-full shadow-[0_0_30px_rgba(197,160,40,0.4)] border-2 border-gold-400 uppercase tracking-widest text-sm flex items-center gap-2"
+          className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] bg-gold-500 hover:bg-gold-400 text-black font-bold py-3 px-6 md:py-4 md:px-8 rounded-full shadow-[0_0_30px_rgba(197,160,40,0.4)] border-2 border-gold-400 uppercase tracking-widest text-xs md:text-sm flex items-center gap-2"
         >
           <span className="relative flex h-3 w-3 mr-1">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-30"></span>

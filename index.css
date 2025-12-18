@@ -16,7 +16,8 @@
 
 @layer base {
   html {
-    scroll-behavior: auto !important; /* Lenis takes control */
+    scroll-behavior: auto; /* Lenis takes control */
+    overflow-x: hidden;
   }
 
   body {
@@ -73,12 +74,17 @@
   }
 
   /* Infinite Scroll Ticker (CSS Optimized) */
-  @keyframes ticker {
-    0% { transform: translateX(0) translateZ(0); }
-    100% { transform: translateX(-50%) translateZ(0); }
-  }
-  .animate-ticker {
-    animation: ticker 40s linear infinite;
-    will-change: transform;
-  }
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+svg {
+  shape-rendering: optimizeSpeed; /* Prioriza velocidade sobre precisão geométrica */
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
+  will-change: transform; /* <--- O segredo da performance */
+}
 }

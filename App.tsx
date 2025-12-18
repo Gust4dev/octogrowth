@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import TentacleBackground from './components/TentacleBackground';
 import { StickyCTA } from './components/StickyCTA';
+import Lenis from 'lenis';
 import { 
   Heart, 
   Brain, 
@@ -24,7 +25,7 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
-import { motion, useInView, AnimatePresence, useScroll } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 
 // --- Shared Components ---
 
@@ -55,15 +56,22 @@ const SectionTitle: React.FC<{ children: React.ReactNode; subtitle?: string; ali
   </div>
 );
 
-const FadeIn: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
+const FadeIn: React.FC<{ children: React.ReactNode; delay?: number; disableMobile?: boolean }> = ({ children, delay = 0, disableMobile = false }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  const shouldAnimate = !disableMobile || !isMobile;
   
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      initial={shouldAnimate ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
+      animate={isInView || !shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, delay, ease: "easeOut" }}
     >
       {children}
@@ -104,15 +112,58 @@ const AccordionItem: React.FC<{ question: string; answer: string }> = ({ questio
 // --- Main App ---
 
 export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
   return (
-    <div className="relative min-h-screen bg-military-950 text-zinc-300 font-sans selection:bg-gold-500/30 selection:text-gold-400">
+    <div className="relative min-h-screen bg-military-950 text-zinc-300 font-sans selection:bg-gold-500/30 selection:text-gold-400 overflow-x-hidden">
       <TentacleBackground />
 
       {/* Header/Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-military-950/95 border-b border-gold-500/10">
+      <motion.nav 
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: "-100%" },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className="fixed top-0 left-0 right-0 z-50 bg-military-950/95 border-b border-gold-500/10"
+      >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-serif text-white tracking-widest">OCTO <span className="text-gold-500">GROWTH</span></span>
+            <span className="text-xl md:text-2xl font-serif text-white tracking-wider md:tracking-widest">OCTO <span className="text-gold-500">GROWTH</span></span>
           </div>
           <div className="hidden lg:flex items-center gap-8 text-xs font-bold tracking-[0.15em] uppercase">
             <a href="#metodo" className="hover:text-gold-400 transition-colors">O Método</a>
@@ -120,15 +171,21 @@ export default function App() {
             <a href="#mentor" className="hover:text-gold-400 transition-colors">O Mentor</a>
             <a href="#faq" className="hover:text-gold-400 transition-colors">Dúvidas</a>
           </div>
-          <button className="bg-gold-600 hover:bg-gold-500 text-black font-bold py-2 px-6 rounded-sm transition-all transform hover:scale-105 uppercase tracking-wide text-xs">
-            Candidatar-se
+          <button className="bg-gold-600 hover:bg-gold-500 text-black font-bold py-2 px-4 md:px-6 rounded-sm transition-all transform hover:scale-105 uppercase tracking-wide text-xs">
+            <span className="md:hidden">Aplicar</span>
+            <span className="hidden md:inline">Candidatar-se</span>
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-military-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20" 
+          style={{
+            background: 'radial-gradient(circle, rgba(74,94,66,1) 0%, rgba(0,0,0,0) 70%)'
+          }}
+        />
         
         <div className="max-w-5xl mx-auto px-6 text-center z-10 relative">
           <motion.div 
@@ -361,7 +418,7 @@ export default function App() {
             { icon: <BarChart3 className="w-12 h-12" />, title: "Comercial", desc: "Scripts de fechamento rápido. Sem 'vou pensar'." },
             { icon: <PieChart className="w-12 h-12" />, title: "Gestão do Dono", desc: "Saia do operacional. Assuma o estratégico." },
           ].map((brain, i) => (
-            <FadeIn key={i} delay={i * 0.05}>
+            <FadeIn key={i} delay={i * 0.05} disableMobile>
               <motion.div 
                 className="p-6 border border-military-800 bg-military-900/40 rounded-sm hover:border-gold-500 hover:bg-military-800/60 transition-colors duration-300 cursor-default group relative overflow-hidden h-full"
               >
