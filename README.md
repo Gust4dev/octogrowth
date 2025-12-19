@@ -1,6 +1,6 @@
-# Octo Growth Mentoria
+# Filmtech Growth Mentoria
 
-Landing page oficial da mentoria **Octo Growth**, focada em estruturação empresarial, gestão de margem e crescimento escalável.
+Landing page oficial da mentoria **Filmtech Growth**, focada em estruturação empresarial, gestão de margem e crescimento escalável.
 
 ## 🚀 Tecnologias
 
@@ -48,4 +48,4 @@ A página apresenta diversas seções estratégicas:
 
 ## 📝 Licença
 
-Todos os direitos reservados a Octo Growth.
+Todos os direitos reservados a Filmtech Growth.

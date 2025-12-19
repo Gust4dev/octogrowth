@@ -35,7 +35,7 @@ const Section: React.FC<{
   id?: string;
   darker?: boolean;
 }> = ({ children, className = "", id, darker = false }) => (
-  <section id={id} className={`relative py-24 px-6 md:px-12 lg:px-24 overflow-hidden ${darker ? 'bg-military-900/40' : 'bg-transparent'} ${className}`}>
+  <section id={id} className={`relative py-24 px-6 md:px-12 lg:px-24 overflow-hidden ${darker ? 'bg-military-950/90' : 'bg-transparent'} ${className}`}>
     <div className="max-w-7xl mx-auto relative z-10">
       {children}
     </div>
@@ -163,7 +163,7 @@ export default function App() {
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-serif text-white tracking-wider md:tracking-widest">OCTO <span className="text-gold-500">GROWTH</span></span>
+            <span className="text-xl md:text-2xl font-serif text-white tracking-wider md:tracking-widest">FILMTECH <span className="text-gold-500">GROWTH</span></span>
           </div>
           <div className="hidden lg:flex items-center gap-8 text-xs font-bold tracking-[0.15em] uppercase">
             <a href="#metodo" className="hover:text-gold-400 transition-colors">O Método</a>
@@ -248,7 +248,7 @@ export default function App() {
                   <span className="w-2 h-2 rounded-full bg-military-500"></span>
                   <span className="text-white/40">+350 EMPRESAS MENTORADAS</span>
                   <span className="w-2 h-2 rounded-full bg-military-500"></span>
-                  <span className="text-white/40">METODOLOGIA OCTO GROWTH</span>
+                  <span className="text-white/40">METODOLOGIA FILMTECH GROWTH</span>
                   <span className="w-2 h-2 rounded-full bg-military-500"></span>
                   <span className="text-white/40">MARGEM & LUCRO</span>
                   <span className="w-2 h-2 rounded-full bg-military-500"></span>
@@ -331,7 +331,7 @@ export default function App() {
              <div className="bg-military-900/30 p-8 border border-gold-500/30 rounded-sm h-full relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 blur-[80px]"></div>
                <h3 className="text-2xl font-serif text-gold-500 mb-6 flex items-center gap-3">
-                 <CheckCircle2 /> O Cenário Octo
+                 <CheckCircle2 /> O Cenário Filmtech
                </h3>
                <ul className="space-y-4">
                  <li className="text-zinc-300">✅ O dono foca em estratégia e expansão.</li>
@@ -354,9 +354,9 @@ export default function App() {
             A LÓGICA DO POLVO
           </h2>
           <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            O polvo é a criatura mais adaptável dos oceanos. Não pela força bruta, mas pela <span className="text-gold-500 font-bold">inteligência descentralizada</span>. Ele possui <span className="text-white">3 corações</span> e <span className="text-white">9 cérebros</span>. 
+            O polvo é a criatura mais adaptável dos oceanos. Ele possui <span className="text-white">3 corações</span> e <span className="text-white">9 cérebros</span>. 
             <br/><br/>
-            Nada é excesso. Tudo é controle. É assim que sua empresa deve operar: autônoma, inteligente e com múltiplos centros de comando.
+            O Método Filmtech opera exatamente com esse princípio: <span className="text-gold-500 font-bold">inteligência descentralizada</span>. Nada é excesso. Tudo é controle. É assim que sua empresa deve operar.
           </p>
         </FadeIn>
       </Section>
@@ -403,7 +403,7 @@ export default function App() {
         <SectionTitle subtitle="Os Módulos de Comando">OS 9 CÉREBROS</SectionTitle>
         <p className="text-center text-zinc-400 max-w-2xl mx-auto mb-12">
           Cada tentáculo do polvo opera de forma independente, mas coordenado pelo centro. 
-          Na Octo Growth, implementamos 9 sistemas de gestão no seu negócio.
+          Na Filmtech Growth, implementamos 9 sistemas de gestão no seu negócio.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -473,7 +473,7 @@ export default function App() {
                       <MessageCircle />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Acesso à Mesa Octo</h3>
+                      <h3 className="text-xl font-bold text-white mb-2">Acesso à Mesa Filmtech</h3>
                       <p className="text-zinc-400 text-sm">Você é a média das pessoas com quem convive. Sente-se ao lado de quem já superou seus problemas atuais.</p>
                     </div>
                   </div>
@@ -542,7 +542,7 @@ export default function App() {
                 A virada de chave não foi trabalhar mais. Foi criar processos. Decidi que minha empresa não dependeria do meu braço, mas da minha mente.
               </p>
               <p>
-                Criei a <strong>Octo Growth</strong> para entregar exatamente esse "Manual de Operações" que me faltou no começo. Para tirar você do operacional e te colocar no comando estratégico.
+                Apliquei esses princípios na <strong>Filmtech Luxury</strong> e agora, através da <strong>Filmtech Growth</strong>, ensino você a fazer o mesmo. Entregamos o "Manual de Operações" para tirar você do operacional e te colocar no comando estratégico.
               </p>
             </div>
 
@@ -576,14 +576,10 @@ export default function App() {
              <div className="bg-military-900 p-8 border border-military-800 relative">
                <div className="text-gold-500 text-4xl font-serif absolute top-4 left-6">"</div>
                <p className="text-zinc-300 italic mb-6 mt-4 relative z-10">
-                 Cheguei faturando 150k e sem ver a cor do dinheiro. Em 4 meses de Octo, reduzimos o custo fixo em 20% e dobramos a margem líquida. Pela primeira vez tirei férias sem o celular.
+                 "Cara, antes eu não conseguia fechar Ppf por medo, mas depois da técnica que você me ensinou tive mais confiança, os clientes apareceram"
                </p>
-               <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-military-800 rounded-full"></div>
-                 <div>
-                   <p className="text-white font-bold text-sm">Ricardo Silva</p>
-                   <p className="text-zinc-500 text-xs">Agência de Marketing</p>
-                 </div>
+               <div>
+                 <p className="text-white font-bold text-sm">Cliente 1</p>
                </div>
              </div>
            </FadeIn>
@@ -592,14 +588,10 @@ export default function App() {
              <div className="bg-military-900 p-8 border border-military-800 relative">
                <div className="text-gold-500 text-4xl font-serif absolute top-4 left-6">"</div>
                <p className="text-zinc-300 italic mb-6 mt-4 relative z-10">
-                 Eu achava que meu problema era vender mais. O Roberto me mostrou que eu estava pagando para trabalhar. Reajustamos preços e a demanda aumentou pela autoridade.
+                 "Eu tinha medo de fazer o curso pq era caro, mas recuperei a grana no primeiro trampo mano kkkkkk"
                </p>
-               <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-military-800 rounded-full"></div>
-                 <div>
-                   <p className="text-white font-bold text-sm">Amanda Costa</p>
-                   <p className="text-zinc-500 text-xs">Clínica de Estética</p>
-                 </div>
+               <div>
+                 <p className="text-white font-bold text-sm">Cliente 2</p>
                </div>
              </div>
            </FadeIn>
@@ -608,14 +600,10 @@ export default function App() {
              <div className="bg-military-900 p-8 border border-military-800 relative">
                <div className="text-gold-500 text-4xl font-serif absolute top-4 left-6">"</div>
                <p className="text-zinc-300 italic mb-6 mt-4 relative z-10">
-                 O módulo de gestão de pessoas salvou minha empresa. Tinha 20 funcionários batendo cabeça. Hoje tenho 12 voando baixo. Menos custo, mais resultado.
+                 "A mentoria fez muita diferença pra mim depois do curso, saber que material usar, qual tipo de marketing e sem contar os puxoes de orelha"
                </p>
-               <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-military-800 rounded-full"></div>
-                 <div>
-                   <p className="text-white font-bold text-sm">Carlos Mendes</p>
-                   <p className="text-zinc-500 text-xs">Indústria Têxtil</p>
-                 </div>
+               <div>
+                 <p className="text-white font-bold text-sm">Cliente 3</p>
                </div>
              </div>
            </FadeIn>
@@ -631,7 +619,7 @@ export default function App() {
            </div>
 
           <h3 className="text-2xl md:text-3xl font-serif text-white mb-8 text-center">
-            PARA QUEM É A OCTO GROWTH?
+            PARA QUEM É A FILMTECH GROWTH?
           </h3>
 
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
@@ -668,7 +656,7 @@ export default function App() {
           <div className="space-y-2">
             <AccordionItem 
               question="A mentoria serve para prestadores de serviço?"
-              answer="Sim. A metodologia Octo se aplica a qualquer negócio que precise de processo, margem e escala. Temos casos de sucesso em clínicas, agências, escritórios de advocacia e construtoras."
+              answer="Sim. A metodologia Filmtech se aplica a qualquer negócio que precise de processo, margem e escala. Temos casos de sucesso em clínicas, agências, escritórios de advocacia e construtoras."
             />
             <AccordionItem 
               question="Preciso ter uma equipe grande?"
@@ -695,7 +683,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
           <div>
             <div className="text-3xl font-serif text-white tracking-widest mb-6">
-              OCTO <span className="text-gold-500">GROWTH</span>
+              FILMTECH <span className="text-gold-500">GROWTH</span>
             </div>
             <p className="text-zinc-500 max-w-sm">
               Empresas não quebram por falta de esforço. Quebram por falta de controle. Devolvemos o comando para suas mãos.
@@ -704,8 +692,8 @@ export default function App() {
           
           <div className="flex flex-col gap-4 text-right">
              <span className="text-zinc-600 uppercase text-xs tracking-[0.3em]">Contato</span>
-             <a href="mailto:contato@octogrowth.com.br" className="text-white hover:text-gold-500 transition-colors">
-               contato@octogrowth.com.br
+             <a href="mailto:contato@filmtechgrowth.com.br" className="text-white hover:text-gold-500 transition-colors">
+               contato@filmtechgrowth.com.br
              </a>
              <div className="flex gap-4 justify-end mt-4">
                {/* Social placeholders */}
@@ -720,7 +708,7 @@ export default function App() {
         </div>
         
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-military-900 text-center md:text-left text-zinc-700 text-sm flex flex-col md:flex-row justify-between">
-          <span>&copy; {new Date().getFullYear()} Octo Growth. Todos os direitos reservados.</span>
+          <span>&copy; {new Date().getFullYear()} Filmtech Growth. Todos os direitos reservados.</span>
           <div className="flex gap-6 justify-center md:justify-end mt-4 md:mt-0">
             <span className="cursor-pointer hover:text-zinc-500">Termos de Uso</span>
             <span className="cursor-pointer hover:text-zinc-500">Política de Privacidade</span>
